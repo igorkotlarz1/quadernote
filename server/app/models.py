@@ -137,3 +137,20 @@ class LlmCall(Base):
     duration_ms: Mapped[int] = mapped_column(Integer, default=0)
     request_id: Mapped[str | None] = mapped_column(String(64))  # Anthropic's request id, for support
     error: Mapped[str | None] = mapped_column(Text)
+
+
+# ---- M5: spaced repetition. Only the answers are stored; each device replays them through FSRS to get
+# the state of every card, so there is no card table to keep in sync and no conflicts between devices.
+
+
+class Review(Base):
+    __tablename__ = "reviews"
+
+    seq: Mapped[int] = mapped_column(Integer, primary_key=True)  # server order, for "give me what is new"
+    id: Mapped[str] = mapped_column(String(64), unique=True)  # made on the device; re-sent = ignored
+    card_id: Mapped[str] = mapped_column(String(96), index=True)  # "<entry id>:itpl", "<verb id>:forms", ...
+    rating: Mapped[int] = mapped_column(Integer)  # 1 again, 2 hard, 3 good, 4 easy (FSRS)
+    reviewed_at: Mapped[str] = mapped_column(String(40), index=True)  # ISO time on the device
+    mode: Mapped[str] = mapped_column(String(16))  # flash / type / verb
+    answer: Mapped[str | None] = mapped_column(Text)  # what was typed, if anything
+    duration_ms: Mapped[int] = mapped_column(Integer, default=0)

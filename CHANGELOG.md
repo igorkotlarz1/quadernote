@@ -1,5 +1,6 @@
 # Changelog
 
+- 2026-11-21 · M5: daily review ("Powtórka") with FSRS on the device: flashcards IT→PL, typing PL→IT with accent check, verb forms; append-only review log synced through `/api/reviews`.
 - 2026-11-20 · M4 done (#8); M7 to-do: STT candidates for a CPU eval, "Q&A" from own recordings, cached lector voice.
 - 2026-11-19 · M4: "Opracuj lekcję" and "Oceń tydzień" in one click through the Claude API (Haiku 5.5 / Sonnet 5.5, structured outputs), every call logged in `llm_calls` with tokens and estimated cost, "Koszty Claude" in the app; manual prompts kept as a fallback.
 - 2026-11-19 · M3.5 done (#7); repository renamed to quadernote.

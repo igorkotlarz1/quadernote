@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { LevelBar } from "./components/LevelBar";
 import { Footer, LessonBar } from "./components/Lesson";
 import { Masthead } from "./components/Masthead";
+import { Review } from "./components/Review";
 import { Sheet } from "./components/Sheet";
 import { Tools } from "./components/Tools";
 import { ToastProvider } from "./components/ui";
@@ -26,6 +27,7 @@ export function App() {
       <div className="wrap">
         <LevelBar openWeek={openWeek} forceOpen={levelFlash} />
         <Masthead />
+        <Review />
         <LessonBar />
         <Sheet />
         <Verbs />

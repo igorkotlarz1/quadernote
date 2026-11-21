@@ -221,3 +221,32 @@ textarea{font-family:var(--f-it);font-size:.82rem;width:100%;min-height:150px;bo
 .sync::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 .sync-ok::before { background: var(--ok); }
 .sync-offline { color: var(--red); }
+
+/* M5: review ("Powtórka") — a card on the squared sheet, the Italian side in the mono face like the notebook */
+.review{display:flex;flex-direction:column;gap:12px;border:1.5px solid var(--ink);border-radius:var(--r);padding:14px 16px;background:var(--sheet)}
+.review-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.review-sum{margin:6px 0 0;font-size:.98rem}
+.review-sum b{font-variant-numeric:tabular-nums}
+.rcard{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:16px;border:1.5px solid var(--line);border-radius:var(--r);
+  background-color:var(--sheet);background-image:linear-gradient(var(--quad) 1px,transparent 1px),linear-gradient(90deg,var(--quad) 1px,transparent 1px);background-size:20px 20px;border-left:3px solid var(--red)}
+.rcard.done{border-left-color:var(--ok)}
+.rcard.done p{margin:0}
+.rmeta{display:flex;justify-content:space-between;width:100%;font-family:var(--f-it);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+.rprompt{font-family:var(--f-it);font-size:clamp(1.5rem,5vw,2.2rem);font-weight:500;line-height:1.15;overflow-wrap:anywhere}
+.rprompt.pl{font-family:var(--f-display);font-stretch:110%;font-weight:700}
+.rprompt small{display:block;font-family:var(--f-ui);font-size:1rem;font-weight:600;color:var(--red);margin-top:6px}
+.rhint{color:var(--muted);font-size:.9rem;margin-top:-6px}
+.ranswer{font-family:var(--f-display);font-stretch:110%;font-weight:700;font-size:1.4rem;padding-top:10px;border-top:1.5px dashed var(--line);width:100%}
+.rrate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
+.rrate button{justify-content:center;padding:0 6px}
+.rtype{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;width:100%}
+.rtype .field{flex:1 1 220px}
+.rtype input{font-family:var(--f-it)}
+.rresult{flex-basis:100%;margin:0;font-weight:600}
+.rresult.ok{color:var(--ok)}
+.rresult.accent,.rresult.wrong{color:var(--red)}
+.rresult b{font-family:var(--f-it)}
+.rset summary{cursor:pointer;color:var(--muted);font-size:.9rem;min-height:44px;display:flex;align-items:center}
+.rset .field{flex:1 1 180px}
+.rnote{color:var(--muted);font-size:.85rem;margin:8px 0 0}
+@media (max-width:420px){.rrate{grid-template-columns:repeat(2,minmax(0,1fr))}}

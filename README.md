@@ -102,6 +102,10 @@ The vial at the top shows the level **A1 · A1+ · A2 · A2+ · B1** and how far
 
 With the server running (M2), open the same address on the phone. Today's lesson is there. The footer says **Zapisane na serwerze 16:15** (saved on the server). Fill a NULL on the phone on the bus, and the laptop has it the next time you look.
 
+### 6 · Every day: Powtórka (spaced repetition)
+
+At the top of the page, **Powtórka** says what is on for today: cards due for review and a few new ones (10 a day by default). Every word with a translation becomes two cards: *la casa → ?* (flip and rate yourself: **Znowu · Trudne · Dobrze · Łatwe**) and *dom → ?* (type the Italian; a missing accent counts as "almost"). A checked verb asks one form at a time: *andare, noi → ?*. The schedule comes from [FSRS](https://github.com/open-spaced-repetition/ts-fsrs) (the algorithm modern Anki uses, MIT license), computed on the phone from the log of answers, so it works in airplane mode and phone and laptop agree once they sync.
+
 ### Also in the toolbox
 
 - **Wklej stare notatki** (paste old notes): paste lines like `la casa – dom` from an old notebook and they become rows.
@@ -260,8 +264,8 @@ Each milestone has a **gate**: one sentence that must be true on a real lesson, 
 | M2 | FastAPI + Postgres on the OptiPlex, Tailscale, backups | phone and laptop see the same lesson; a trial restore works | ✅ done |
 | M3 | Offline-first PWA (IndexedDB + service worker) | a lesson typed in airplane mode syncs when the network is back | ✅ done |
 | M3.5 | Offline Italian→Polish dictionary from open data | a top-5000 word typed in airplane mode gets a Polish suggestion without the API | ✅ done |
-| M4 | "Opracuj lekcję" through the Claude API | one click instead of the manual prompt; cost of every call logged | 🟡 in review |
-| M5 | Spaced repetition (FSRS) | the app picks what to review every day | ⚪ |
+| M4 | "Opracuj lekcję" through the Claude API | one click instead of the manual prompt; cost of every call logged | ✅ done |
+| M5 | Spaced repetition (FSRS) | the app picks what to review every day | 🟡 in review |
 | M6 | Notebook OCR (vision) + review screen | photo of a page → checked words in the lesson | ⚪ |
 | M7 | Voice: speech-to-text + pronunciation score | the app scores the pronunciation of a single word | ⚪ |
 | M8 | Embeddings, semantic search, second user, PL ⇄ EN interface | search by meaning; a second user has separate data and an English UI | ⚪ |
@@ -295,7 +299,7 @@ npm ci
 npm run dev                     # http://localhost:5173, /api is proxied to :8000
 npm test                        # unit tests (Vitest)
 npm run e2e                     # gate M1 (Playwright, vite preview)
-npm run e2e:server              # gates M2, M3, M3.5, M4, against an EMPTY compose stack started with LLM_FAKE=true
+npm run e2e:server              # gates M2, M3, M3.5, M4, M5, against an EMPTY compose stack started with LLM_FAKE=true
                                 # (first: docker compose exec api python -m app.lexicon.build --from tests/fixtures/lexicon)
 ```
 
