@@ -2,6 +2,7 @@
 // localStorage it has no 5 MB cap, survives offline use and lets the service worker keep the app alive
 // without a network. Dexie is a thin wrapper that turns its awkward event API into Promises.
 import Dexie, { type Table } from "dexie";
+import type { Review } from "./srs";
 import type { Synced } from "./syncMerge";
 import type { Lesson, State } from "./types";
 
@@ -18,11 +19,14 @@ interface Meta {
 export class QuadernoDB extends Dexie {
   lessons!: Table<Lesson, string>;
   meta!: Table<Meta, string>;
+  reviews!: Table<Review, string>;
 
   constructor(name = DB_NAME) {
     super(name);
     // Only indexed fields are listed; the rest of each lesson is stored as it is.
     this.version(1).stores({ lessons: "id, date", meta: "key" });
+    // M5: the log of review answers (lib/reviews.ts). Adding a table is a new version; old data stays.
+    this.version(2).stores({ lessons: "id, date", meta: "key", reviews: "id, card_id, reviewed_at" });
   }
 }
 

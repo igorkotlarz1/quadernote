@@ -8,11 +8,13 @@ from .api import router
 from .lexicon.api import router as lexicon_router
 from .llm.api import router as llm_router
 from .settings import settings
+from .srs.api import router as srs_router
 
-app = FastAPI(title="Quadernote", version="0.4.0")
+app = FastAPI(title="Quadernote", version="0.5.0")
 app.include_router(router)
 app.include_router(lexicon_router)
 app.include_router(llm_router)
+app.include_router(srs_router)
 
 # Files the browser must re-check on every start, or a phone keeps an old app version forever (M3).
 NO_CACHE = {"index.html", "sw.js", "registerSW.js", "manifest.webmanifest"}
